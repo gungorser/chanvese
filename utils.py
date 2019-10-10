@@ -4,11 +4,18 @@ Created on Oct 9, 2019
 @author: user
 '''
 import numpy as np
-import matplotlib.pyplot as plt
 
-def lipschitz(radius, shape):
+
+def lipschitz(shape, mode, **kwargs):
     x,y = np.meshgrid(np.arange(shape[1]), np.arange(shape[0]))
-    return radius - np.sqrt((x%(radius*4)-radius*2)**2 + (y%(radius*4)-radius*2)**2 )
+    if mode == 'uniform':
+        radius=kwargs['radius']
+        return radius - np.sqrt((x%(radius*4)-radius*2)**2 + (y%(radius*4)-radius*2)**2 )
+    if mode == 'circles':
+        ret=[]
+        for shape in kwargs['circles']:
+            ret.append(shape['radius'] - np.sqrt((x-shape['x'])**2 + (y-shape['y'])**2))
+        return np.max(ret, axis=0)
 
 def divergent(v):
     ret=np.zeros(v[0].shape)
@@ -20,7 +27,8 @@ def dirac(x, ep=1):
     return ep/(np.pi*(ep**2+x**2))
 
 def hside(x, ep=1):
-    return (1+ (2*np.arctan(x/ep))/np.pi)/2
+    ret= (1/2)*(1+(2/np.pi)*np.arctan(x/ep))
+    return ret
 
 class Diff():
     def __init__(self, x):
