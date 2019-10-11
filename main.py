@@ -10,11 +10,11 @@ if __name__ == '__main__':
     print('Running. Press CTRL-C to exit.')
     try:
         Frontend({
-            'phi':{'mode':'uniform', 'radius': 8},
-            'image':{'path': 'resource/crack.jpg', 'inverse':False},
+            'phi':{'mode':'circles', 'circles': [{'radius':20, 'x':64, 'y':64}]},
+            'image':{'path': 'resource/cluster.bmp', 'inverse':False},
             'algorithms':[
-                {'name':'ChanVese', 'kwargs':{'dt':1, 'mu':1, 'v':0, 'lambda1':1, 'lambda2':1}},
-                {'name':'ChanVese2', 'kwargs':{'dt':1, 'mu':0, 'v':0, 'lambda1':1, 'lambda2':1}}
+                {'name':'ChanVese2', 'kwargs':{'dt':100, 'mu':.8, 'v':-.3, 'lambda1':1, 'lambda2':1}},
+                # {'name':'Ipachi', 'kwargs':{'dt':1, 'mu1':0, 'mu2':0, 'lambdaV1':1, 'lambdaV2':1, 'lambdaI1':1, 'lambdaI2':1}}
             ]
         }).update()
     except KeyboardInterrupt:
