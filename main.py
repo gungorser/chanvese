@@ -14,7 +14,7 @@ if __name__ == '__main__':
             'image':{'path': 'resource/cluster.bmp', 'inverse':False},
             'algorithms':[
                 {'name':'ChanVese2', 'kwargs':{'dt':100, 'mu':.8, 'v':-.3, 'lambda1':1, 'lambda2':1}},
-                # {'name':'Ipachi', 'kwargs':{'dt':1, 'mu1':0, 'mu2':0, 'lambdaV1':1, 'lambdaV2':1, 'lambdaI1':1, 'lambdaI2':1}}
+                {'name':'Ipachi', 'kwargs':{'dt':1, 'mu1':0, 'mu2':0, 'lambdaV1':1, 'lambdaV2':1, 'lambdaI1':1, 'lambdaI2':1}}
             ]
         }).update()
     except KeyboardInterrupt:

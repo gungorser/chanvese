@@ -54,12 +54,11 @@ class ChanVese2(Algorithm):
             - self.lambda1*(self.u-c1)**2 
             + self.lambda2*(self.u-c2)**2
         )
+        
 class Ipachi(Algorithm):
     def increment_phi(self):
         self.LP=np.fft.fft(self.phi)
         g=1/(1+np.imag(self.LP))
-        mu1=self.mu1
-        return \
-            + mu1
+        return 0
 
         
