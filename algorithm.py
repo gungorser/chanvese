@@ -2,9 +2,7 @@ import numpy as np
 from utils import hside, dirac, avg_intensity, Diff, divergent
         
 class Algorithm():
-    def __init__(self, phi, u, **kwargs):
-        self.phi=phi
-        self.u=u/np.max(u)
+    def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
         self.dirac=dirac(self.phi)
         self.hside=hside(self.phi)
