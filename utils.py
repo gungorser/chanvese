@@ -24,7 +24,15 @@ def divergent(v):
     return ret
 
 def dirac(x, ep=1):
-    return ep/(np.pi*(ep**2+x**2))
+    return ep/(np.pi*(ep**2+2*x**2))
+
+def mean_curvature(Z):
+    Zy, Zx  = np.gradient(Z)
+    Zxy, Zxx = np.gradient(Zx)
+    Zyy, _ = np.gradient(Zy)
+    H = (Zx**2 + 1)*Zyy - 2*Zx*Zy*Zxy + (Zy**2 + 1)*Zxx
+    H = -H/(2*(Zx**2 + Zy**2 + 1)**(1.5) + 0.00000000000001)
+    return H
 
 def hside(x, ep=1):
     ret= (1/2)*(1+(2/np.pi)*np.arctan(x/ep))
